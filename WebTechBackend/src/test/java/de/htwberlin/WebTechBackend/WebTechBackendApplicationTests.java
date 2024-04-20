@@ -1,10 +1,10 @@
-package com.example.backend;
+package de.htwberlin.WebTechBackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class WebTechBackendApplicationTests {
 
 	@Test
 	void contextLoads() {

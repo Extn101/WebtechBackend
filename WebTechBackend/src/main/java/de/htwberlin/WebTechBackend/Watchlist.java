@@ -1,11 +1,11 @@
-package com.example.backend;
+package de.htwberlin.WebTechBackend;
 
 public class Watchlist {
     private String title;
     private String description;
     private boolean done;
 
-    public Watchlist(String title, String description, boolean done) {
+    public Watchlist(String description, String title, boolean done) {
         this.title = title;
         this.description = description;
         this.done = done;
