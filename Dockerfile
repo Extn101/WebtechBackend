@@ -1,4 +1,4 @@
-LABEL authors="bened"
+
 FROM gradle:8-jdk21 as builder
 WORKDIR /
 COPY . ./
