@@ -5,6 +5,5 @@ COPY . ./
 RUN gradle build
 
 FROM openjdk:21-slim
-LABEL authors="marwin.moellers"
 COPY --from=builder build/libs .
-ENTRYPOINT ["java","-jar","/Webtechbackend-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/WebTechBackend-0.0.1-SNAPSHOT.jar"]
