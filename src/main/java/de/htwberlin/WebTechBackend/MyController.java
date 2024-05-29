@@ -8,6 +8,13 @@ import java.util.List;
 @CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173", "https://webtechfrontend.onrender.com/"})
 public class MyController {
 
+    WatchlistService service;
+
+    @PostMapping()
+    public WatchlistEntry createWatchlistEntry(@RequestBody WatchlistEntry entry) {
+        return service.saveWatchlistEntry(entry);
+    }
+
     @GetMapping()
     public List<WatchlistEntry> greeting() {
         WatchlistEntry entry = new WatchlistEntry(1, "Interstellar", 169);

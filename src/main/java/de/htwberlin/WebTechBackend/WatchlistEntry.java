@@ -1,11 +1,19 @@
 package de.htwberlin.WebTechBackend;
 
+import jakarta.persistence.*;
+
+@Entity
 public class WatchlistEntry {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-    private int id;
     private int length;
 
-    public WatchlistEntry(int id, String name, int length) {
+    public WatchlistEntry() {
+    }
+
+    public WatchlistEntry(long id, String name, int length) {
         this.id = id;
         this.name = name;
         this.length = length;
@@ -15,7 +23,7 @@ public class WatchlistEntry {
         return name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
