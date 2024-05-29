@@ -1,22 +1,21 @@
 package de.htwberlin.WebTechBackend;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RequestMapping("/watchlist")
 @RestController
+@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173", "https://webtechfrontend.onrender.com/"})
 public class MyController {
 
-    @GetMapping("/watchlist")
-    public List<Watchlist> greeting() {
-        Watchlist entry = new Watchlist("Movie", "Marvel", false);
-        Watchlist entry1 = new Watchlist("Movie", "Star Wars", false);
-        Watchlist entry2 = new Watchlist("Serie", "Star Trek", false);
-        Watchlist entry3 = new Watchlist("Serie", "Fallout", false);
-        Watchlist entry4 = new Watchlist("Movie", "James Bond", false);
+    @GetMapping()
+    public List<WatchlistEntry> greeting() {
+        WatchlistEntry entry = new WatchlistEntry(1, "Interstellar", 169);
+        WatchlistEntry entry1 = new WatchlistEntry(2, "Marley und Ich", 120);
+        WatchlistEntry entry2 = new WatchlistEntry(3, "No Time to Die", 163);
+        WatchlistEntry entry3 = new WatchlistEntry(4, "Skyfall", 143);
+        WatchlistEntry entry4 = new WatchlistEntry(5, "Dune", 155);
+
         return List.of(entry, entry1, entry2, entry3, entry4);
     }
 
