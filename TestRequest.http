@@ -1,0 +1,10 @@
+###
+
+POST http://localhost:8080/watchlist
+content-type: application/json
+
+{
+      "id": 2,
+      "name": "Furiousa",
+      "duration": "2h 30m"
+}
