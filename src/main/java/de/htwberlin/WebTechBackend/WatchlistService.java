@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class WatchlistService {
 
     @Autowired
-    WatchlistRepository repo;
+    private WatchlistRepository repo;
 
     public WatchlistEntry saveWatchlistEntry(WatchlistEntry entry) {
         return repo.save(entry);
