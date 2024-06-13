@@ -7,27 +7,27 @@ public class WatchlistEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private int length;
+    private String titel;
+    private int filmId;
 
     public WatchlistEntry() {
     }
 
-    public WatchlistEntry(long id, String name, int length) {
+    public WatchlistEntry(long id, String titel, int filmId) {
         this.id = id;
-        this.name = name;
-        this.length = length;
+        this.titel = titel;
+        this.filmId = filmId;
     }
 
-    public String getName() {
-        return name;
+    public String getTitel() {
+        return titel;
     }
 
     public long getId() {
         return id;
     }
 
-    public int getLength() {
-        return length;
+    public int getFilmId() {
+        return filmId;
     }
 }
