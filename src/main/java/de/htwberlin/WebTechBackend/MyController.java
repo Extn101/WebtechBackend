@@ -2,6 +2,8 @@ package de.htwberlin.WebTechBackend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -14,8 +16,14 @@ public class MyController {
     private WatchlistService service;
 
     @PostMapping()
-    public WatchlistEntry createWatchlistEntry(@RequestBody WatchlistEntry entry) {
-        return service.saveWatchlistEntry(entry);
+    public ResponseEntity<?> createWatchlistEntry(@RequestBody WatchlistEntry entry) {
+        boolean exists = service.movieExistsInWatchlist(entry.getFilmId());
+        if (exists) {
+            // Return a 409 Conflict status with a message if the movie is already in the watchlist
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Movie already exists in the watchlist");
+        }
+        // Return a 200 OK status with the saved watchlist entry if it was successfully added
+        return ResponseEntity.ok(service.saveWatchlistEntry(entry));
     }
 
     @GetMapping()

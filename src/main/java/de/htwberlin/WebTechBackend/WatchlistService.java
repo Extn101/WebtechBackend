@@ -23,4 +23,7 @@ public class WatchlistService {
     }
     public void delete(long id) {repo.deleteById(id);
     }
+    public boolean movieExistsInWatchlist(long filmId) {
+        return repo.existsById(filmId);
+    }
 }
