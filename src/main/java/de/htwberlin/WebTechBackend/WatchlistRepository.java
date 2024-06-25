@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface WatchlistRepository extends JpaRepository<WatchlistEntry, Long> {
-    boolean existsByFilm_id(long film_id);
+    boolean existsByFilmId(long filmId);
 
 }

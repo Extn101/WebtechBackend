@@ -28,7 +28,7 @@ public class MyController {
     }
     @PostMapping()
     public ResponseEntity<?> createWatchlistEntry(@RequestBody WatchlistEntry entry) {
-        boolean exists = service.movieExistsInWatchlist(entry.getFilm_id());
+        boolean exists = service.movieExistsInWatchlist(entry.getFilmId());
         if (exists) {
             // Return a 409 Conflict status with a message if the movie is already in the watchlist
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Movie already exists in the watchlist");
