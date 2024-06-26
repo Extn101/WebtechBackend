@@ -16,7 +16,6 @@ public class MyController {
     private WatchlistService service;
 
 
-
     @GetMapping()
     public List<WatchlistEntry> greeting() {
         return service.getAll();
@@ -26,6 +25,7 @@ public class MyController {
     public void deleteWatchlistEntry(@PathVariable long id) {
         service.delete(id);
     }
+
     @PostMapping()
     public ResponseEntity<?> createWatchlistEntry(@RequestBody WatchlistEntry entry) {
         boolean exists = service.movieExistsInWatchlist(entry.getFilmId());
