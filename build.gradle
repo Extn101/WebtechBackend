@@ -32,3 +32,13 @@ tasks.named('test') {
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:deprecation"
 }
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    reports {
+        junitXml.required.set(true)
+    }
+}
