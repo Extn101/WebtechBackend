@@ -1,6 +1,7 @@
 package de.htwberlin.WebTechBackend;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -50,6 +51,7 @@ public class MyControllerTest {
     }
 
     @Test
+    @DisplayName("Get All Movies - Success")
     public void getAllMovies_success() throws Exception {
         List<WatchlistEntry> watchlistEntries = new ArrayList<>(Arrays.asList(RECORD_1, RECORD_2, RECORD_3));
 
@@ -65,6 +67,21 @@ public class MyControllerTest {
     }
 
     @Test
+    @DisplayName("Get All Movies - Empty List")
+    public void getAllMovies_failure() throws Exception {
+        Mockito.when(watchlistService.getAll()).thenReturn(new ArrayList<>());
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/watchlist")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", is(empty())));
+
+
+    }
+
+    @Test
+    @DisplayName("Create Watchlist Entry - Failure")
     public void createWatchlistEntry_failure() throws Exception {
         List<WatchlistEntry> watchlistEntries = new ArrayList<>(Arrays.asList(RECORD_1, RECORD_2, RECORD_3));
 
@@ -79,6 +96,7 @@ public class MyControllerTest {
     }
 
     @Test
+    @DisplayName("Create Watchlist Entry - Success")
     public void createWatchlistEntry_success() throws Exception {
         WatchlistEntry RECORD_4 = new WatchlistEntry(4L, "Saltburn", 4);
 
@@ -99,6 +117,7 @@ public class MyControllerTest {
     }
 
     @Test
+    @DisplayName("Delete Watchlist Entry")
     public void deleteWatchlistEntry_success() throws Exception {
         long idToDelete = 1L;
         Mockito.doNothing().when(watchlistService).delete(idToDelete);
