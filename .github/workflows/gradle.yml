@@ -18,7 +18,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Run tests
+      - name: Run Backend Tests
         run: ./gradlew test
 
       - name: Notify on failure
